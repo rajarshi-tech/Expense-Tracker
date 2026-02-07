@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from 'react'
+import { createContext, useState } from 'react'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ExpenseContext = createContext({
@@ -39,7 +39,9 @@ export function ExpenseProvider({ children }) {
     ])
   }
 
-  const value = useMemo(() => ({ expenses, addExpense }), [expenses])
-
-  return <ExpenseContext.Provider value={value}>{children}</ExpenseContext.Provider>
+  return (
+    <ExpenseContext.Provider value={{ expenses, addExpense }}>
+      {children}
+    </ExpenseContext.Provider>
+  )
 }
