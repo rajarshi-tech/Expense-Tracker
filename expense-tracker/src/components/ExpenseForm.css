@@ -73,15 +73,15 @@
   padding: 5px;
   font-size: 14px;
   color: white;
-  background-color: #60534b;
+  background-color: #9f7259;
   cursor: pointer;
   transition: all 0.3s;
 }
 .add-button:hover {
-  background-color: #7d6b60;
+  background-color: #b38268;
   transition: all 0.3s;
 }
 .add-button:active {
-  background-color: #55483f;
+  background-color: #9f6445;
   transition: all 0.3s;
 }
