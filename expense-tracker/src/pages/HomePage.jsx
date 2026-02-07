@@ -6,11 +6,9 @@ import { ExpenseList } from "../components/ExpenseList"
 export function HomePage() {
   return (
     <>
-      <ExpenseProvider>
-        <Header />
-        <ExpenseForm />
-        <ExpenseList />
-      </ExpenseProvider>
+      <Header />
+      <ExpenseForm />
+      <ExpenseList />
     </>
   )
 }

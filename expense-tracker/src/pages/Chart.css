@@ -1,0 +1,18 @@
+.canvas {
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.chart-canvas {
+  margin-left: auto;
+  margin-right: auto;
+}
+.canvas {
+  display: flex;
+  gap: 2rem;
+}
+
+.chart-canvas {
+  width: 400px;
+  height: 300px;
+}
