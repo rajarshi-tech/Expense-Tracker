@@ -1,6 +1,8 @@
 import HeaderLogo from '../assets/header-logo.png'
 import HamburgerLogoClosed from '../assets/burger-menu-closed.png'
 import HamburgerLogoOpen from '../assets/burger-menu-open.png'
+import { Link } from 'react-router-dom' 
+
 
 import './Header.css'
 import { useState } from 'react';
@@ -29,8 +31,8 @@ export function Header() {
           </div>
         </div>        
         <div className='header-right'>
-          <a className='link'>Dashboard</a>
-          <a className='link'>Charts</a>
+          <Link to="/" className='link'>Dashboard</Link>
+          <Link to="/charts" className='link'>Charts</Link>
         </div>
       </div>
     </>

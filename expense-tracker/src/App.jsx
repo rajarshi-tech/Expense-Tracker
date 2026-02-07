@@ -1,19 +1,14 @@
-import { Header } from './components/Header'
-import { ExpenseForm } from './components/ExpenseForm'
-import { ExpenseList } from './components/ExpenseList'
-import { ExpenseProvider } from './context/ExpenseContext'
+import { HomePage } from './pages/HomePage'
+import { Route, Routes } from 'react-router-dom'
 
 import './App.css'
 
 function App() {
   return (
-    <>
-      <ExpenseProvider>
-        <Header />
-        <ExpenseForm />
-        <ExpenseList />
-      </ExpenseProvider>
-    </>
+    <Routes>
+      <Route index element={<HomePage />} />
+      <Route path="charts" element={<p>test</p>} />
+    </Routes>
   )
 }
 
