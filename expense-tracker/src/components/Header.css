@@ -1,0 +1,84 @@
+.header {
+  position: fixed;        /* fixed to viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 60px;
+  padding: 0 16px;
+
+  background-color: white;
+  color: #423632;
+}
+
+/* LEFT SIDE */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* HAMBURGER */
+.hamburger-wrapper {
+  position: relative;
+}
+
+.hamburger-logo {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+/* DROPDOWN MENU */
+.hamburger-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background-color: white;
+  color: #423632;
+
+  padding: 8px 0;
+  min-width: 140px;
+
+  display: none;
+}
+
+/* simple hover open (you can switch to JS later) */
+.hamburger-wrapper:hover .hamburger-menu {
+  display: block;
+}
+
+.hamburger-menu div {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.hamburger-menu div:hover {
+  background-color: rgba(72, 72, 72, 0.056);
+}
+
+/* LOGO */
+.header-logo {
+  height: 32px;
+  width: auto;
+}
+
+/* RIGHT SIDE */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-right a {
+  color: #423632;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,59 @@
+.expense-form {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+  max-width: 800px;
+  padding: 40px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+/* ---------- TOP ---------- */
+.top {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.category-input {
+  flex: 1;
+}
+
+.top button {
+  width: 80px;
+}
+
+/* ---------- BOTTOM ---------- */
+.bottom {
+  display: flex;
+  gap: 10px;
+  align-items: stretch; /* critical */
+}
+
+/* LEFT */
+.bottom-left {
+  flex: 2;
+}
+
+.details-input {
+  width: 100%;
+  height: 100%;
+  resize: none;       /* optional */
+}
+
+/* RIGHT */
+.bottom-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cost-input,
+.bottom-right input[type="date"],
+.category-input,
+.details-input {
+  padding: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
