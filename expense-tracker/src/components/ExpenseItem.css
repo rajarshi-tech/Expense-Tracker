@@ -15,7 +15,7 @@
   white-space: nowrap;
 }
 
-/* Details: flexible, wraps to 2 lines max */
+/* Details: flexible */
 .item-details {
   flex: 1;
   min-width: 0;
@@ -36,5 +36,13 @@
   flex: 0 0 80px;
   text-align: right;
   font-weight: 600;
+  vertical-align: middle;
 }
 
+.delete-button {
+  margin-left: 10px;
+  align-items: center;
+  vertical-align: middle;
+  height: 20px;
+  width: auto;
+}

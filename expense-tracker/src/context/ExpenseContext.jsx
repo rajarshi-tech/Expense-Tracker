@@ -6,6 +6,8 @@ import { createContext, useEffect, useState } from 'react'
 export const ExpenseContext = createContext({
   expenses: [],
   addExpense: () => {},
+  deleteExpense: () => {},
+  editExpense: () => {}
 })
 
 /*
@@ -48,10 +50,25 @@ export function ExpenseProvider({ children }) {
       },
       ...prev,
     ])
-  }
+  };
+
+  const deleteExpense = (expenseId) => {
+    setExpenses((prev) => prev.filter((expense) => expense.id !== expenseId))
+  };
+
+  const editExpense = (expenseId, updatedExpense) => {
+    setExpenses(prev =>
+      prev.map(expense =>
+        expense.id === expenseId
+          ? { ...expense, ...updatedExpense }
+          : expense
+      )
+    );
+  };
+
 
   return (
-    <ExpenseContext.Provider value={{ expenses, addExpense }}>
+    <ExpenseContext.Provider value={{ expenses, addExpense, deleteExpense, editExpense }}>
       {children}
     </ExpenseContext.Provider>
   )

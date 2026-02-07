@@ -47,11 +47,16 @@
   padding: 8px 0;
   min-width: 140px;
 
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #423632;
+
   display: none;
 }
 
 /* simple hover open (you can switch to JS later) */
-.hamburger-wrapper:hover .hamburger-menu {
+.show-hamburger-menu {
   display: block;
 }
 

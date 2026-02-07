@@ -2,15 +2,22 @@ import HeaderLogo from '../assets/header-logo.png'
 import HamburgerLogo from '../assets/burger-menu-closed.png'
 
 import './Header.css'
+import { useState } from 'react';
 
 export function Header() {
+
+  const [state, setState] = useState(false);
+
   return (
     <>
       <div className="header">
         <div className='header-left'>
           <div className='hamburger-wrapper'>
-            <img src={HamburgerLogo} className='hamburger-logo'/>
-            <div className="hamburger-menu">
+            <img src={HamburgerLogo} className='hamburger-logo' onClick={() => {
+              if(state) setState(false);
+              else setState(true);
+            }} />
+            <div className={"hamburger-menu" + ((state) ? " show-hamburger-menu" : "")}>
               <div>Graphs</div>
               <div>Settings</div>
               <div>Dark Mode</div>
