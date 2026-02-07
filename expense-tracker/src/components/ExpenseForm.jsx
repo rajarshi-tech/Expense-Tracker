@@ -10,13 +10,13 @@ export function ExpenseForm() {
   const [date, setDate] = useState('')
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    const trimmedCategory = category.trim()
-    const trimmedDetails = details.trim()
-    const parsedCost = Number.parseFloat(cost)
+    event.preventDefault();
+    const trimmedCategory = category.trim();
+    const trimmedDetails = (details) ? details.trim() : "No Details Added";
+    const parsedCost = Number.parseFloat(cost);
 
     if (!trimmedCategory || !trimmedDetails || !date || Number.isNaN(parsedCost)) {
-      return
+      return;
     }
 
     addExpense({
@@ -24,12 +24,12 @@ export function ExpenseForm() {
       category: trimmedCategory,
       details: trimmedDetails,
       date,
-    })
+    });
 
-    setCategory('')
-    setDetails('')
-    setCost('')
-    setDate('')
+    setCategory('');
+    setDetails('');
+    setCost('');
+    setDate('');
   }
 
   return (
@@ -71,5 +71,5 @@ export function ExpenseForm() {
         </div>
       </form>
     </>
-  )
+  );
 }

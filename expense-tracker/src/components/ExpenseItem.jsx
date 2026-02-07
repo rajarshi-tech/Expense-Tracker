@@ -6,32 +6,32 @@ import { ExpenseContext } from '../context/ExpenseContext'
 import './ExpenseItem.css'
 
 export function ExpenseItem({ expense }) {
-  const { deleteExpense, editExpense } = useContext(ExpenseContext)
-  const [isEditing, setIsEditing] = useState(false)
-  const [category, setCategory] = useState('')
-  const [details, setDetails] = useState('')
-  const [cost, setCost] = useState('')
-  const [date, setDate] = useState('')
+  const { deleteExpense, editExpense } = useContext(ExpenseContext);
+  const [isEditing, setIsEditing] = useState(false);
+  const [category, setCategory] = useState('');
+  const [details, setDetails] = useState('');
+  const [cost, setCost] = useState('');
+  const [date, setDate] = useState('');
 
   const openEditor = () => {
-    setCategory(expense.category)
-    setDetails(expense.details)
-    setCost(String(expense.cost))
-    setDate(expense.date)
-    setIsEditing(true)
-  }
+    setCategory(expense.category);
+    setDetails((expense.details === "No Details Added") ? "" : expense.details);
+    setCost(String(expense.cost));
+    setDate(expense.date);
+    setIsEditing(true);
+  };
 
   const closeEditor = () => {
-    setIsEditing(false)
-  }
+    setIsEditing(false);
+  };
 
   const handleSave = () => {
-    const trimmedCategory = category.trim()
-    const trimmedDetails = details.trim()
-    const parsedCost = Number.parseFloat(cost)
+    const trimmedCategory = category.trim();
+    const trimmedDetails = (details) ? details.trim() : "No Details Added";
+    const parsedCost = Number.parseFloat(cost);
 
     if (!trimmedCategory || !trimmedDetails || !date || Number.isNaN(parsedCost)) {
-      return
+      return;
     }
 
     editExpense(expense.id, {
@@ -39,8 +39,8 @@ export function ExpenseItem({ expense }) {
       details: trimmedDetails,
       cost: parsedCost,
       date,
-    })
-    closeEditor()
+    });
+    closeEditor();
   }
 
   return (
@@ -105,5 +105,5 @@ export function ExpenseItem({ expense }) {
         </div>
       )}
     </>
-  )
+  );
 }
