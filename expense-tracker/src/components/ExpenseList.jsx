@@ -17,7 +17,7 @@ export function ExpenseList() {
           <div className="item-category">Category</div>
           <div className="item-details">Details</div>
           <div className="item-date">Date</div>
-          <div className="item-cost">Cost</div>
+          <div className="item-cost cost-title">Cost</div>
         </div>
         {expenses.map((expense) => (
           <ExpenseItem key={expense.id} expense={expense} />
