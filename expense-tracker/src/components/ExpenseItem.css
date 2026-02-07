@@ -70,16 +70,20 @@
 }
 .modal-backdrop {
   position: fixed;
-  inset: 0;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
   background: rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 100;
 }
 
 .modal {
-  width: min(520px, 92vw);
+  text-align: left;
+  width: 600px;
   background: #fff7f2;
   border: 1px solid #e3d5ce;
   border-radius: 10px;
@@ -90,13 +94,16 @@
 .modal-header {
   font-weight: 700;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .modal-body {
   display: flex;
   flex-direction: column;
+  align-items: stretch; /* important */
   gap: 10px;
   padding: 20px;
+
 }
 
 .modal-row {
@@ -111,6 +118,7 @@
   border-radius: 6px;
   background: #fff;
   font-size: 14px;
+  box-sizing: border-box;
 }
 
 .modal-textarea {
@@ -120,7 +128,7 @@
 
 .modal-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 8px;
   margin-top: 12px;
 }
