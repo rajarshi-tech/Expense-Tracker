@@ -25,7 +25,7 @@ export function Header() {
             <div className={"hamburger-menu" + ((state) ? " show-hamburger-menu" : "")}>
               <Link className="hamburger-item" to="/charts">Graphs</Link>
               <div className="hamburger-item clear-data" onClick={() => {
-                if (window.confirm("Clear all expenses?")) {
+                if (window.confirm("Clear all Expenses?")) {
                   deleteTotal();
                   setState(false);
                 }
