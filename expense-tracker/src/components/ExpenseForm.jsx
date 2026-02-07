@@ -42,7 +42,7 @@ export function ExpenseForm() {
             value={category}
             onChange={(event) => setCategory(event.target.value)}
           />
-          <button type="submit">Add</button>
+          <button className="add-button" type="submit">Add</button>
         </div>
 
         <div className="bottom">

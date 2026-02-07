@@ -6,6 +6,7 @@ export const ExpenseContext = createContext({
   addExpense: () => {},
 })
 
+/*
 const initialExpenses = [
   {
     id: 'exp-1',
@@ -22,9 +23,10 @@ const initialExpenses = [
     date: '2026-02-06',
   },
 ]
+*/
 
 export function ExpenseProvider({ children }) {
-  const [expenses, setExpenses] = useState(initialExpenses)
+  const [expenses, setExpenses] = useState([])
 
   const addExpense = (expenseInput) => {
     setExpenses((prev) => [

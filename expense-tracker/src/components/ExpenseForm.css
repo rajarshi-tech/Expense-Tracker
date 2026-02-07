@@ -1,10 +1,11 @@
 .expense-form {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 150px;
-  max-width: 800px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  max-width: 90%;
   padding: 40px;
-  background: #fff;
+  background: #f9f9f982;
   border-radius: 12px;
 }
 
@@ -39,6 +40,7 @@
   width: 100%;
   height: 100%;
   resize: none;       /* optional */
+  border-radius: 5px;
 }
 
 /* RIGHT */
@@ -56,4 +58,17 @@
   padding: 10px;
   font-size: 14px;
   box-sizing: border-box;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.add-button {
+  border-radius: 5px;
+  border-style: none;
+  padding: 5px;
+  font-size: 14px;
+  color: white;
+  background-color: #60534b;
 }

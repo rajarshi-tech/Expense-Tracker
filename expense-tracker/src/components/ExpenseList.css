@@ -1,0 +1,32 @@
+.expense-list {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #f9f9f982;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+/* Header row */
+.expense-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #423632;
+  border-bottom: 2px solid #ddd;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #60534b;
+}
+
+/* Empty state */
+.expense-empty {
+  padding: 16px;
+  color: #423632;
+  text-align: center;
+}
