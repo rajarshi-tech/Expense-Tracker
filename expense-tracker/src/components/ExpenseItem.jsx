@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import DeleteButton from '../assets/delete-button.png'
+import EditButton from '../assets/edit.png'
 import { ExpenseContext } from '../context/ExpenseContext'
 
 import './ExpenseItem.css'
@@ -50,12 +51,11 @@ export function ExpenseItem({ expense }) {
         <div className="item-date">{expense.date}</div>
         <div className="item-cost">
           {expense.cost.toFixed(2)}
-          <button className="edit-button" type="button" onClick={openEditor}>
-            Edit
-          </button>
+          <span className='gap'></span>
+          <img src={EditButton} className="action-button" onClick={openEditor} />
           <img
             src={DeleteButton}
-            className="delete-button"
+            className="action-button"
             onClick={() => deleteExpense(expense.id)}
           />
         </div>
@@ -94,7 +94,7 @@ export function ExpenseItem({ expense }) {
               </div>
             </div>
             <div className="modal-actions">
-              <button className="modal-button ghost" type="button" onClick={closeEditor}>
+              <button className="modal-button" type="button" onClick={closeEditor}>
                 Cancel
               </button>
               <button className="modal-button" type="button" onClick={handleSave}>

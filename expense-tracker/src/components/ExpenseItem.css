@@ -37,26 +37,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;          /* spacing between Edit & Delete */
   min-width: 120px; /* ensures space for buttons */
   font-weight: 600;
 }
-
-.edit-button {
-  margin-left: 8px;
-  padding: 2px 6px;
-  font-size: 12px;
-  border: 1px solid #d5c6c0;
-  background: #fff7f2;
-  border-radius: 4px;
-  cursor: pointer;
+.gap {
+  width: 6px;
 }
-
-.edit-button:hover {
-  background: #f3e6df;
-}
-
-.delete-button {
+.action-button {
   height: 20px;
   width: auto;
   cursor: pointer;
@@ -64,7 +51,7 @@
   transition: background-color 0.2s;
 }
 
-.delete-button:hover {
+.action-button:hover {
   background-color: #ac9a952d;
   border-radius: 4px;
 }
@@ -139,8 +126,12 @@
   border-radius: 6px;
   background: #e7d7cf;
   cursor: pointer;
+  background-color: transparent;
+}
+.modal-button:hover {
+  background-color: #e5d6cd53;;
+}
+.modal-button:active {
+  background-color: #f6d2ba65;;
 }
 
-.modal-button.ghost {
-  background: transparent;
-}
