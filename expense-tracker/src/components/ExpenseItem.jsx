@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react'
+import { createPortal } from 'react-dom'
 import DeleteButton from '../assets/delete-button.png'
 import EditButton from '../assets/edit.png'
 import { ExpenseContext } from '../context/ExpenseContext'
@@ -61,49 +62,51 @@ export function ExpenseItem({ expense }) {
         </div>
       </div>
 
-      {isEditing && (
-        <div className="modal-backdrop" onClick={closeEditor}>
-          <div className="modal" onClick={(event) => event.stopPropagation()}>
-            <div className="modal-header">Edit Expense</div>
-            <div className="modal-body">
-              <input
-                className="modal-input"
-                placeholder="Category"
-                value={category}
-                onChange={(event) => setCategory(event.target.value)}
-              />
-              <textarea
-                className="modal-input modal-textarea"
-                placeholder="Details"
-                value={details}
-                onChange={(event) => setDetails(event.target.value)}
-              />
-              <div className="modal-row">
+      {isEditing &&
+        createPortal(
+          <div className="modal-backdrop" onClick={closeEditor}>
+            <div className="modal" onClick={(event) => event.stopPropagation()}>
+              <div className="modal-header">Edit Expense</div>
+              <div className="modal-body">
                 <input
                   className="modal-input"
-                  placeholder="Cost"
-                  value={cost}
-                  onChange={(event) => setCost(event.target.value)}
+                  placeholder="Category"
+                  value={category}
+                  onChange={(event) => setCategory(event.target.value)}
                 />
-                <input
-                  className="modal-input"
-                  type="date"
-                  value={date}
-                  onChange={(event) => setDate(event.target.value)}
+                <textarea
+                  className="modal-input modal-textarea"
+                  placeholder="Details"
+                  value={details}
+                  onChange={(event) => setDetails(event.target.value)}
                 />
+                <div className="modal-row">
+                  <input
+                    className="modal-input"
+                    placeholder="Cost"
+                    value={cost}
+                    onChange={(event) => setCost(event.target.value)}
+                  />
+                  <input
+                    className="modal-input"
+                    type="date"
+                    value={date}
+                    onChange={(event) => setDate(event.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="modal-actions">
+                <button className="modal-button" type="button" onClick={closeEditor}>
+                  Cancel
+                </button>
+                <button className="modal-button" type="button" onClick={handleSave}>
+                  Save
+                </button>
               </div>
             </div>
-            <div className="modal-actions">
-              <button className="modal-button" type="button" onClick={closeEditor}>
-                Cancel
-              </button>
-              <button className="modal-button" type="button" onClick={handleSave}>
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 }
