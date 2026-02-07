@@ -29,7 +29,7 @@ export function ExpenseProvider({ children }) {
   const addExpense = (expenseInput) => {
     setExpenses((prev) => [
       {
-        id: `exp-${Date.now()}`,
+        id: crypto.randomUUID,
         cost: expenseInput.cost,
         category: expenseInput.category.trim(),
         details: expenseInput.details.trim(),
