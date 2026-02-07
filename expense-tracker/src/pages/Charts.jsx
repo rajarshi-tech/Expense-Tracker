@@ -51,6 +51,7 @@ export function Charts() {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: { display: true },
         },
@@ -87,6 +88,7 @@ export function Charts() {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: "bottom",
@@ -100,11 +102,16 @@ export function Charts() {
 
   return (
     <>
-        <Header />
-        <div className="canvas">
-          <canvas className="chart-canvas" ref={lineChartRef} />
-          <canvas className="chart-canvas pie-chart" ref={pieChartRef} />
+      <Header />
+      <div className="canvas">
+        <div className="line-container">
+          <canvas ref={lineChartRef} className="chart-canvas" />
         </div>
+
+        <div className="pie-container">
+          <canvas ref={pieChartRef} className="chart-canvas" />
+        </div>
+      </div>
     </>
   );
 }
