@@ -102,6 +102,7 @@ export function Charts() {
 
   return (
     <>
+    <title>Charts</title>
       <Header />
       <div className="canvas">
         <div className="line-container">

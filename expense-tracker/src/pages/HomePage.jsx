@@ -6,6 +6,7 @@ import { ExpenseList } from "../components/ExpenseList"
 export function HomePage() {
   return (
     <>
+      <title>Dashboard</title>
       <Header />
       <ExpenseForm />
       <ExpenseList />
