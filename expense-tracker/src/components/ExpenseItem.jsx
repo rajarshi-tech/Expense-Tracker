@@ -50,7 +50,7 @@ export function ExpenseItem({ expense }) {
         <div className="item-details">{expense.details}</div>
         <div className="item-date">{expense.date}</div>
         <div className="item-cost">
-          {expense.cost.toFixed(2)}
+          {expense.cost.toFixed(2) + "₹"}
           <span className='gap'></span>
           <img src={EditButton} className="action-button" onClick={openEditor} />
           <img
