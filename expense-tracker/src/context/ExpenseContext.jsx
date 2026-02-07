@@ -1,6 +1,4 @@
 import { createContext, useEffect, useState } from 'react'
-import { saveToStorage } from '../utility/saveToStorage'
-import { getFromStorage } from '../utility/getFromStorage,js'
 
 //key = expenses
 
@@ -31,12 +29,12 @@ const initialExpenses = [
 
 export function ExpenseProvider({ children }) {
   const [expenses, setExpenses] = useState(() => {
-    const stored = getFromStorage('expenses');
+    const stored = localStorage.getItem('expenses');;
     return (stored) ? JSON.parse(stored) : [];
   });
 
   useEffect(() => {
-    saveToStorage('expenses', JSON.stringify(expenses));
+    localStorage.setItem('expenses', JSON.stringify(expenses));
   }, [expenses]);
 
   const addExpense = (expenseInput) => {
