@@ -2,14 +2,16 @@ import HeaderLogo from '../assets/header-logo.png'
 import HamburgerLogoClosed from '../assets/burger-menu-closed.png'
 import HamburgerLogoOpen from '../assets/burger-menu-open.png'
 import { Link } from 'react-router-dom' 
-
+import { ExpenseContext } from '../context/ExpenseContext'
 
 import './Header.css'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 export function Header() {
 
   const [state, setState] = useState(false);
+
+  const { deleteTotal } = useContext(ExpenseContext);
 
   return (
     <>
@@ -21,9 +23,13 @@ export function Header() {
               else setState(true);
             }} />
             <div className={"hamburger-menu" + ((state) ? " show-hamburger-menu" : "")}>
-              <div>Graphs</div>
-              <div>Settings</div>
-              <div>Dark Mode</div>
+              <Link className="hamburger-item" to="/charts">Graphs</Link>
+              <div className="hamburger-item clear-data" onClick={() => {
+                if (window.confirm("Clear all expenses?")) {
+                  deleteTotal();
+                  setState(false);
+                }
+              }}>Clear Data</div>
             </div>
           </div>
           <div className="header-logo-container">

@@ -66,9 +66,13 @@ export function ExpenseProvider({ children }) {
     );
   };
 
+  const deleteTotal = () => {
+    setExpenses([]);
+    localStorage.clear();
+  };
 
   return (
-    <ExpenseContext.Provider value={{ expenses, addExpense, deleteExpense, editExpense }}>
+    <ExpenseContext.Provider value={{ expenses, addExpense, deleteExpense, editExpense, deleteTotal }}>
       {children}
     </ExpenseContext.Provider>
   )

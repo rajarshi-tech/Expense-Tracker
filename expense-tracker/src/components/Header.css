@@ -75,6 +75,23 @@
   width: auto;
 }
 
+.hamburger-item {
+  display: block;
+  padding: 8px 16px;
+  cursor: pointer;
+
+  color: #423632;
+  text-decoration: none;
+
+  transition: all 0.3s;
+}
+
+.hamburger-item:hover {
+  background-color: rgba(72, 72, 72, 0.056);
+
+  transition: all 0.3s;
+}
+
 /* RIGHT SIDE */
 .header-right {
   display: flex;
@@ -96,5 +113,9 @@
 
 .link:active {
   color: #372c29;
+  transition: all 0.3s;
+}
+.clear-data:hover {
+  color: rgba(188, 37, 37, 0.905);
   transition: all 0.3s;
 }
