@@ -71,4 +71,14 @@
   font-size: 14px;
   color: white;
   background-color: #60534b;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.add-button:hover {
+  background-color: #7d6b60;
+  transition: all 0.3s;
+}
+.add-button:active {
+  background-color: #55483f;
+  transition: all 0.3s;
 }

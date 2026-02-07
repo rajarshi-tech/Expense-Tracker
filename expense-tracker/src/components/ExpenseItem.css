@@ -45,4 +45,11 @@
   vertical-align: middle;
   height: 20px;
   width: auto;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.delete-button:hover {
+  background-color: #ac9a952d;
+  border-radius: 2px;
+  transition: all 0.3s;
 }
