@@ -11,8 +11,6 @@ export function Charts() {
   const lineChartRef = useRef(null);
   const pieChartRef = useRef(null);
 
-  // ---------- DATA PROCESSING ----------
-
   // Line chart: total expense per date
   const expensesByDate = {};
   expenses.forEach(({ date, cost }) => {
@@ -34,7 +32,7 @@ export function Charts() {
   const pieLabels = Object.keys(expensesByCategory);
   const pieData = pieLabels.map(cat => expensesByCategory[cat]);
 
-  // ---------- LINE CHART ----------
+  // LINE CHART
   useEffect(() => {
     if (!lineChartRef.current) return;
 
@@ -71,7 +69,7 @@ export function Charts() {
     return () => chart.destroy();
   }, [lineData, lineLabels]);
 
-  // ---------- PIE CHART ----------
+  // PIE CHART
   useEffect(() => {
     if (!pieChartRef.current) return;
 
@@ -105,7 +103,7 @@ export function Charts() {
         <Header />
         <div className="canvas">
           <canvas className="chart-canvas" ref={lineChartRef} />
-          <canvas className="chart-canvas" ref={pieChartRef} />
+          <canvas className="chart-canvas pie-chart" ref={pieChartRef} />
         </div>
     </>
   );
