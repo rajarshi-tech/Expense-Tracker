@@ -2,6 +2,7 @@
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.7); /* Translucent white */
   backdrop-filter: blur(10px);           /* Blurs the background pattern */
   border: 1px solid rgba(255, 255, 255, 0.2);
