@@ -1,4 +1,8 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
+import { saveToStorage } from '../utility/saveToStorage'
+import { getFromStorage } from '../utility/getFromStorage,js'
+
+//key = expenses
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ExpenseContext = createContext({
@@ -26,12 +30,19 @@ const initialExpenses = [
 */
 
 export function ExpenseProvider({ children }) {
-  const [expenses, setExpenses] = useState([])
+  const [expenses, setExpenses] = useState(() => {
+    const stored = getFromStorage('expenses');
+    return (stored) ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    saveToStorage('expenses', JSON.stringify(expenses));
+  }, [expenses]);
 
   const addExpense = (expenseInput) => {
     setExpenses((prev) => [
       {
-        id: crypto.randomUUID,
+        id: crypto.randomUUID(),
         cost: expenseInput.cost,
         category: expenseInput.category.trim(),
         details: expenseInput.details.trim(),
