@@ -1,0 +1,51 @@
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  width: 320px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-title {
+  text-align: center;
+}
+
+.login-input {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.password-row {
+  display: flex;
+  gap: 8px;
+}
+
+.toggle-btn {
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.login-btn {
+  padding: 10px;
+}
+
+.google-login {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.google-logo-placeholder {
+  width: 20px;
+  height: 20px;
+}
