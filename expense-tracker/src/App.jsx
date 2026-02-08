@@ -5,16 +5,34 @@ import { Charts } from './pages/Charts'
 import './App.css'
 import { ExpenseProvider } from './context/ExpenseContext'
 import { Login } from './pages/Login'
+import { AuthProvider } from './context/AuthContext'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
   return (
-    <ExpenseProvider>  
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="charts" element={<Charts />} />
-        <Route path="sign-in" element={<Login />} />
-      </Routes>
-    </ExpenseProvider>
+    <AuthProvider>
+      <ExpenseProvider>
+        <Routes>
+          <Route
+            index
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="charts"
+            element={
+              <ProtectedRoute>
+                <Charts />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="sign-in" element={<Login />} />
+        </Routes>
+      </ExpenseProvider>
+    </AuthProvider>
   )
 }
 

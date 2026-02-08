@@ -13,6 +13,7 @@ import {
   updateDoc,
   writeBatch,
 } from 'firebase/firestore'
+import { useAuth } from './AuthContext'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ExpenseContext = createContext({
@@ -24,13 +25,20 @@ export const ExpenseContext = createContext({
 })
 
 export function ExpenseProvider({ children }) {
+  const { user } = useAuth()
   const [expenses, setExpenses] = useState([])
-  const expensesCollection = useMemo(
-    () => collection(firestore, 'expenses'),
-    []
-  )
+  const expensesCollection = useMemo(() => {
+    if (!user) return null
+    return collection(firestore, 'users', user.uid, 'expenses')
+  }, [user])
 
   useEffect(() => {
+    if (!expensesCollection) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setExpenses([])
+      return undefined
+    }
+
     const q = query(expensesCollection, orderBy('createdAt', 'desc'))
     const unsubscribe = onSnapshot(
       q,
@@ -50,6 +58,7 @@ export function ExpenseProvider({ children }) {
   }, [expensesCollection])
 
   const addExpense = async (expenseInput) => {
+    if (!expensesCollection) return
     await addDoc(expensesCollection, {
       cost: Number(expenseInput.cost),
       category: expenseInput.category.trim(),
@@ -60,10 +69,12 @@ export function ExpenseProvider({ children }) {
   }
 
   const deleteExpense = async (expenseId) => {
-    await deleteDoc(doc(firestore, 'expenses', expenseId))
+    if (!user) return
+    await deleteDoc(doc(firestore, 'users', user.uid, 'expenses', expenseId))
   }
 
   const editExpense = async (expenseId, updatedExpense) => {
+    if (!user) return
     const updatePayload = { ...updatedExpense }
 
     if (Object.prototype.hasOwnProperty.call(updatedExpense, 'category')) {
@@ -84,10 +95,14 @@ export function ExpenseProvider({ children }) {
       }
     })
 
-    await updateDoc(doc(firestore, 'expenses', expenseId), updatePayload)
+    await updateDoc(
+      doc(firestore, 'users', user.uid, 'expenses', expenseId),
+      updatePayload
+    )
   }
 
   const deleteTotal = async () => {
+    if (!expensesCollection) return
     const snapshot = await getDocs(expensesCollection)
     const batch = writeBatch(firestore)
     snapshot.forEach((docSnapshot) => {

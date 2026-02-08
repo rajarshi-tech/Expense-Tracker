@@ -43,9 +43,20 @@
   gap: 12px;
   padding: 10px;
   cursor: pointer;
+  width: 100%;
+  background-color: #111;
+  color: white;
+  border: none;
 }
 
 .google-logo-placeholder {
   width: 20px;
   height: 20px;
+}
+
+.login-error {
+  width: 100%;
+  margin: 0 0 8px;
+  color: #ff6b6b;
+  font-size: 0.9rem;
 }

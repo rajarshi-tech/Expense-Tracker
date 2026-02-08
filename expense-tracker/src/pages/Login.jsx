@@ -1,21 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "./Login.css";
 
 export function Login() {
+  const { user, signInWithEmail, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (user) {
+      navigate("/", { replace: true });
+    }
+  }, [user, navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // login logic here
-    console.log({ email, password });
+    setError("");
+
+    try {
+      await signInWithEmail(email, password);
+    } catch (err) {
+      setError(err?.message || "Failed to sign in.");
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setError("");
+
+    try {
+      await signInWithGoogle();
+    } catch (err) {
+      setError(err?.message || "Failed to sign in with Google.");
+    }
   };
 
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2 className="login-title">Login</h2>
+        {error ? <p className="login-error">{error}</p> : null}
 
         <input
           className="login-input"
@@ -48,10 +75,10 @@ export function Login() {
           Login
         </button>
 
-        <div className="google-login">
+        <button type="button" className="google-login" onClick={handleGoogleSignIn}>
           <div className="google-logo-placeholder" />
           <span>Sign in with Google</span>
-        </div>
+        </button>
       </form>
     </div>
   );

@@ -30,6 +30,7 @@ export function Header() {
                   setState(false);
                 }
               }}>Clear Data</div>
+              <div className='hamburger-item'>Log Out</div>
             </div>
           </div>
           <div className="header-logo-container">
