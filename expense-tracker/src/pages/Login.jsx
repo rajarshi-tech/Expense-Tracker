@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Showing from '../assets/show.png'
+import Hiding from '../assets/hide.png'
+
+import GoogleLogo from '../assets/google.webp'
+
 import "./Login.css";
 
 export function Login() {
@@ -20,6 +25,7 @@ export function Login() {
   }, [user, navigate]);
 
   const handleSubmit = async (e) => {
+    if(email === "" || password === "") return;
     e.preventDefault();
     setError("");
     setIsSubmitting(true);
@@ -33,6 +39,7 @@ export function Login() {
   };
 
   const handleSignUp = async () => {
+    if(email === "" || password === "") return;
     setError("");
     setIsSubmitting(true);
 
@@ -58,7 +65,7 @@ export function Login() {
 
   if (isSubmitting) {
     return (
-      <div className="login-container">
+      <div className="loading-container">
         <div className="login-loading">
           <div className="spinner" />
           <p>Signing you in...</p>
@@ -69,8 +76,8 @@ export function Login() {
 
   return (
     <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className="login-title">Login</h2>
+      <div className="login-form" onSubmit={handleSubmit}>
+        <h2 className="login-title">Sign in</h2>
         {error ? <p className="login-error">{error}</p> : null}
 
         <input
@@ -93,39 +100,38 @@ export function Login() {
             required
             disabled={isSubmitting}
           />
+          <div className="toggle-container">
+            <img
+              src = {showPassword ? Showing : Hiding}
+              className="toggle-btn"
+              onClick={() => setShowPassword((prev) => !prev)}
+              disabled={isSubmitting}
+            />
+          </div>
+        </div>
+        <div className="button-row">
+          <button className="login-btn" disabled={isSubmitting} onClick={handleSubmit}>
+            Login
+          </button>
+
           <button
-            type="button"
-            className="toggle-btn"
-            onClick={() => setShowPassword((prev) => !prev)}
+            className="login-btn"
+            onClick={handleSignUp}
             disabled={isSubmitting}
           >
-            {showPassword ? "Hide" : "Show"}
+            Sign Up
           </button>
         </div>
-
-        <button type="submit" className="login-btn" disabled={isSubmitting}>
-          Login
-        </button>
-
-        <button
-          type="button"
-          className="login-btn"
-          onClick={handleSignUp}
-          disabled={isSubmitting}
-        >
-          Sign Up
-        </button>
-
         <button
           type="button"
           className="google-login"
           onClick={handleGoogleSignIn}
           disabled={isSubmitting}
         >
-          <div className="google-logo-placeholder" />
-          <span>Sign in with Google</span>
+          <img src={GoogleLogo} className="google-logo"/>
+          <span className="google-login-text">Sign in with Google</span>
         </button>
-      </form>
+      </div>
     </div>
   );
 }
