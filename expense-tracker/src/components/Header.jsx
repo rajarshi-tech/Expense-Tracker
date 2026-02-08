@@ -3,6 +3,7 @@ import HamburgerLogoClosed from '../assets/burger-menu-closed.png'
 import HamburgerLogoOpen from '../assets/burger-menu-open.png'
 import { Link } from 'react-router-dom' 
 import { ExpenseContext } from '../context/ExpenseContext'
+import { useAuth } from '../context/AuthContext'
 
 import './Header.css'
 import { useContext, useState } from 'react';
@@ -12,6 +13,7 @@ export function Header() {
   const [state, setState] = useState(false);
 
   const { deleteTotal } = useContext(ExpenseContext);
+  const { signOutUser } = useAuth();
 
   return (
     <>
@@ -30,7 +32,15 @@ export function Header() {
                   setState(false);
                 }
               }}>Clear Data</div>
-              <div className='hamburger-item'>Log Out</div>
+              <div
+                className='hamburger-item'
+                onClick={async () => {
+                  await signOutUser();
+                  setState(false);
+                }}
+              >
+                Log Out
+              </div>
             </div>
           </div>
           <div className="header-logo-container">

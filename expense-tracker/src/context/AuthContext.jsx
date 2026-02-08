@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -12,6 +13,7 @@ const AuthContext = createContext({
   user: null,
   loading: true,
   signInWithEmail: async () => {},
+  signUpWithEmail: async () => {},
   signInWithGoogle: async () => {},
   signOutUser: async () => {},
 })
@@ -32,6 +34,9 @@ export function AuthProvider({ children }) {
   const signInWithEmail = async (email, password) =>
     signInWithEmailAndPassword(auth, email, password)
 
+  const signUpWithEmail = async (email, password) =>
+    createUserWithEmailAndPassword(auth, email, password)
+
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider()
     return signInWithPopup(auth, provider)
@@ -44,6 +49,7 @@ export function AuthProvider({ children }) {
       user,
       loading,
       signInWithEmail,
+      signUpWithEmail,
       signInWithGoogle,
       signOutUser,
     }),

@@ -4,7 +4,8 @@ import { useAuth } from "../context/AuthContext";
 import "./Login.css";
 
 export function Login() {
-  const { user, signInWithEmail, signInWithGoogle } = useAuth();
+  const { user, signInWithEmail, signUpWithEmail, signInWithGoogle } =
+    useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +26,16 @@ export function Login() {
       await signInWithEmail(email, password);
     } catch (err) {
       setError(err?.message || "Failed to sign in.");
+    }
+  };
+
+  const handleSignUp = async () => {
+    setError("");
+
+    try {
+      await signUpWithEmail(email, password);
+    } catch (err) {
+      setError(err?.message || "Failed to sign up.");
     }
   };
 
@@ -73,6 +84,10 @@ export function Login() {
 
         <button type="submit" className="login-btn">
           Login
+        </button>
+
+        <button type="button" className="login-btn" onClick={handleSignUp}>
+          Sign Up
         </button>
 
         <button type="button" className="google-login" onClick={handleGoogleSignIn}>
